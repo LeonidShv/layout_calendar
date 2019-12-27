@@ -8,7 +8,7 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 708px;
-  background: green; }
+  margin: 40px auto; }
 
 .calendar div {
   -webkit-box-sizing: border-box;
@@ -16,10 +16,19 @@ body {
   display: none;
   width: 100px;
   height: 100px;
-  background: gray;
+  background: #eee;
   margin-left: 1px;
   margin-top: 1px;
-  border: 1px solid black; }
+  border: 1px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  line-height: 100px;
+  text-align: center; }
+
+.calendar div:hover {
+  position: relative;
+  bottom: 20px;
+  background: pink; }
 
 .calendar-tue div:first-child {
   margin-left: 102px; }
