@@ -1,23 +1,21 @@
-body {
-  margin: 0;
-}
+@import "_reset";
 
 .calendar {
   display: flex;
   flex-wrap: wrap;
+  margin: 25px auto;
   width: 708px;
-  margin: 40px auto;
 }
 
 .calendar div {
-  box-sizing: border-box;
   display: none;
   width: 100px;
   height: 100px;
-  background: #eee;
   margin-left: 1px;
   margin-top: 1px;
   border: 1px solid black;
+  box-sizing: border-box;
+  background: #eee;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
   line-height: 100px;
@@ -30,28 +28,19 @@ body {
   background: pink;
 }
 
-.calendar-tue div:first-child {
-  margin-left: 102px;
-}
+$days:
+  "mon" 0,
+  "tue" 102px,
+  "wed" 203px,
+  "thu" 304px,
+  "fri" 405px,
+  "sat" 506px,
+  "sun" 607px;
 
-.calendar-wed div:first-child {
-  margin-left: 203px;
-}
-
-.calendar-thu div:first-child {
-  margin-left: 304px;
-}
-
-.calendar-fri div:first-child {
-  margin-left: 405px;
-}
-
-.calendar-sat div:first-child {
-  margin-left: 506px;
-}
-
-.calendar-sun div:first-child {
-  margin-left: 607px;
+@each $day, $mr in $days {
+  .calendar-#{$day} div:first-child {
+    margin-left: $mr;
+  }
 }
 
 @for $i from 28 through 31 {
