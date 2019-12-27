@@ -1,3 +1,57 @@
 body {
   margin: 0;
 }
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 708px;
+  background: green;
+}
+
+.calendar div {
+  box-sizing: border-box;
+  display: none;
+  width: 100px;
+  height: 100px;
+  background: gray;
+  margin-left: 1px;
+  margin-top: 1px;
+  border: 1px solid black;
+}
+
+.calendar-tue div:first-child {
+  margin-left: 102px;
+}
+
+.calendar-wed div:first-child {
+  margin-left: 203px;
+}
+
+.calendar-thu div:first-child {
+  margin-left: 304px;
+}
+
+.calendar-fri div:first-child {
+  margin-left: 405px;
+}
+
+.calendar-sat div:first-child {
+  margin-left: 506px;
+}
+
+.calendar-sun div:first-child {
+  margin-left: 607px;
+}
+
+@for $i from 28 through 31 {
+  .calendar-#{$i} div:nth-child(-n+#{$i}) {
+    display: block;
+  }
+}
+
+@for $i from 1 through 31 {
+  .calendar div:nth-child(#{$i})::after {
+    content: "#{$i}";
+  }
+}
