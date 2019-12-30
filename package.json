@@ -7,11 +7,13 @@
     "start": "gulp",
     "build": "gulp build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "lint": "stylelint src/**/*.scss && eslint src/**/*.js && htmllint --rc ./node_modules/@mate-academy/htmllint-config/.htmllintrc src/*.html"
   },
   "author": "Mate academy",
   "license": "GPL-3.0",
   "devDependencies": {
+    "@mate-academy/eslint-config": "*",
     "@mate-academy/htmllint-config": "*",
     "@mate-academy/stylelint-config": "*",
     "browser-sync": "^2.26.3",
@@ -37,6 +39,20 @@
     "stylelint-scss": "^3.6.1"
   },
   "lint-staged": {
+    "linters": {
+      "*.scss": [
+        "stylelint",
+        "git add"
+      ],
+      "*.js": [
+        "eslint",
+        "git add"
+      ],
+      "*.html": [
+        "htmllint --rc  ./node_modules/@mate-academy/htmllint-config/.htmllintrc",
+        "git add"
+      ]
+    },
     "ignore": [
       "**/dist/**",
       "**/lib/**"
@@ -44,7 +60,8 @@
   },
   "husky": {
     "hooks": {
-      "post-commit": "git update-index --again"
+      "post-commit": "git update-index --again",
+      "pre-commit": "lint-staged"
     }
   },
   "browserslist": [
